@@ -1,0 +1,6 @@
+ven/
+.venv/
+--pychache__/
+*.pyc/
+.evn/
+.idea/
