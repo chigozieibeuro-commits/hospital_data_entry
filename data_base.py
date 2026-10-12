@@ -4,7 +4,7 @@ def connection():
     con=psycopg2.connect(
         host="db",
         postgres_user="postgres",
-        postgress_db="health_file",
+        postgres_db="health_file",
         postgres_password="password",
         port="5432:5432"
     )
