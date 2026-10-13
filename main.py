@@ -19,19 +19,23 @@ def post(data:Records):
     cursor=con.cursor()
 
     query="""INSERT INTO TABLE appointment(name,age,gender,phone,doctor)
-    VALUES(%s,%s,%s,%s,%s);
-    RETURNING id
+    VALUES(%s,%s,%s,%s,%s)
+    RETURNING id;
     """
-    cursor.execute(query,data.Name,data.Age,data.Gender,data.Phone,data.Doctor)
+    cursor.execute(
+        query,
+        (data.Name,data.Age,data.Gender,data.Phone,data.Doctor
+         )
+    )
 
-    cursor.close()
-    cursor.commit()
     con.commit()
+    cursor.close()
+    con.close()
 
-    patient_id=cursor.fetchone()[1]
+    patient_id=cursor.fetchone()
 
 
     return {
         "message:entry successful"
-        f"patient_id: {patient_id}"
+        "patient_id": patient_id
     }
