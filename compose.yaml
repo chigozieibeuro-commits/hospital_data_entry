@@ -1,23 +1,24 @@
 services:
   app:
     build: .
-    container_name: patient api
+    container_name: hos_api
     ports:
-      -"8000:8000"
+      - "8000:8000"
     depends_on:
-      -db
+      - db
+
 
   db:
     image: postgres:17
-    container_name: patient_data
+    container_name: "patient_data"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_DB: health_file
       POSTGRES_PASSWORD: password
-    port:
-    - "5432:5432"
+    ports:
+      - "5432:5432"
     volumes:
-    - postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
 volumes:
   postgres_data:
 

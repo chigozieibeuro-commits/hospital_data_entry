@@ -5,7 +5,7 @@ class Records(BaseModel):
     Name:str
     Age:int
     Gender:str
-    Phone:int
+    Phone:str
     Doctor:str
     date:date
 
